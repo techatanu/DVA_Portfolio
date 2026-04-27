@@ -289,12 +289,8 @@
             <div class="skills-section">
                 <h2>Organizations</h2>
                 <div class="skills-badges">
-                    <span class="badge">Excel</span>
-                    <span class="badge">Looker Studio</span>
+                    <span class="badge">Google Sheets</span>
                     <span class="badge">Tableau</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">SQL</span>
-                    <span class="badge">Pandas</span>
                 </div>
             </div>
         </aside>
@@ -311,16 +307,14 @@
                 <input type="text" id="repo-search" class="local-search" placeholder="Find a repository...">
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="excel">Excel</button>
-                    <button class="filter-btn" data-filter="looker">Looker Studio</button>
-                    <button class="filter-btn" data-filter="python">Python</button>
+                    <button class="filter-btn" data-filter="google">Google Sheets</button>
                     <button class="filter-btn" data-filter="tableau">Tableau</button>
                 </div>
             </div>
 
             <div class="repo-grid" id="repo-grid">
                 
-                <div class="repo-card open-modal-btn" data-category="tableau" data-title="Blinkit-Dashboard" data-img="image.png" data-link="https://github.com/techatanu" data-desc="Basic Blinkit dashboard project created for data visualization and tracking.">
+                <div class="repo-card open-modal-btn" data-category="tableau" data-title="Blinkit-Dashboard" data-img="image.png" data-link="https://public.tableau.com/app/profile/atanu.adhikari5943/viz/Blinkit_17772795406970/Dashboard1" data-desc="Basic Blinkit dashboard project created for data visualization and tracking.">
                     <img src="image.png" alt="Cover" class="card-cover-image">
                     <div class="repo-card-body">
                         <div class="repo-header">
@@ -351,7 +345,7 @@
                         <p class="repo-desc">Google sheets dashboard created for midsem project focusing on data analysis.</p>
                         <div class="repo-tags"><span class="topic-tag">google-sheets</span><span class="topic-tag">dashboard</span></div>
                         <div class="repo-footer">
-                            <span><span class="lang-color lang-excel"></span> Excel/Sheets</span>
+                            <span><span class="lang-color lang-excel"></span> Google Sheets</span>
                         </div>
                     </div>
                 </div>
@@ -395,8 +389,8 @@
                 <p class="modal-desc" id="m-desc">Full description goes here.</p>
             </div>
             <div class="modal-footer">
-                <button class="btn-cancel" id="cancel-modal">Cancel</button>
-                <a href="#" target="_blank" class="btn-primary" id="m-link">View Live Repository</a>
+                <button class="btn-cancel" id="cancel-modal">Close</button>
+                <a href="#" target="_blank" class="btn-primary" id="m-link">View Dashboard</a>
             </div>
         </div>
     </div>
@@ -474,7 +468,14 @@
                 mTitle.textContent = project.getAttribute('data-title');
                 mDesc.textContent = project.getAttribute('data-desc');
                 mImg.src = project.getAttribute('data-img');
-                mLink.href = project.getAttribute('data-link');
+                
+                const link = project.getAttribute('data-link');
+                if (link && link !== "#" && link !== "") {
+                    mLink.href = link;
+                    mLink.style.display = "inline-block";
+                } else {
+                    mLink.style.display = "none";
+                }
                 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden'; 
